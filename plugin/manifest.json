@@ -1,0 +1,46 @@
+{
+  "name": "Total Recall",
+  "version": "0.8.0",
+  "manifest_version": 2,
+  "description": "Customized tab switching and managing.",
+  "permissions": [
+    "tabs",
+    "storage",
+    "pageCapture",
+    "sessions",
+    "history",
+    "webNavigation"
+  ],
+  "background": {
+    "scripts": ["lib/jquery-2.0.3.min.js", "src/utils.js", "src/total-recall.js", "background.js"],
+    "persistent": true
+  },
+//  "content_scripts": [
+//    {
+//      "matches": ["<all_urls>"],
+//      "js": ["lib/qwerty.js","inject.js"]
+//    }
+//  ],
+  "sandbox": {
+    "pages": ["tpl.html"]
+  },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "recall-panel.html"
+  },
+//  "chrome_url_overrides": {
+//    "newtab": "overview-page.html"
+//  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Period"
+      }
+    }
+  },
+  "web_accessible_resources": ["IDR_EXTENSIONS_FAVICON@2x.png"],
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  }
+}

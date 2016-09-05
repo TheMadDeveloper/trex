@@ -1,0 +1,183 @@
+:focus {
+	outline: none;
+}
+
+.startpage {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+}
+
+.pop-wrap {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+}
+
+#qstats {
+
+    margin: 1em 0;
+}
+
+.clear {
+    clear: both;
+}
+
+.stat {
+    font-weight: lighter;
+    margin: 0;
+}
+
+.cir {
+    font-size: 1em;
+    border-radius: 50%;
+    background-color: #d6d6d6;
+    width: 2.5em;
+    height: 2.5em;
+    text-align: center;
+    line-height: 2.5em;
+}
+
+h1.stat {
+    font-size: 1.2em;
+    border-radius: 50%;
+    background-color: #d6d6d6;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    float:left;
+    text-align: center;
+}
+
+h2.stat {
+    font-size: 1.5em;
+}
+h2.stat > div {
+    display: inline-block;
+    width: 2em;
+    line-height: 2em;
+    border: 1px solid #EEE;
+    margin: .4em 0 0 .5em;
+}
+
+h5.stat {
+    overflow: hidden;
+}
+h5.stat > div {
+    margin-top: 1em;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+
+    display: inline-block;
+
+    color: white;
+    text-align: center;
+    opacity: .8;
+    line-height: 1.2em;
+}
+
+img.ico {
+    width:20px;
+	height:20px;
+    display: block;
+}
+
+input {
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    border: 1px solid #EEE;
+    color: #666;
+}
+
+
+input.xl {
+    font-size: 3em;
+}
+
+.pull-right {
+    float: right;
+}
+.pull-left {
+    float: left;
+}
+
+.pop-wrap {
+	width: 700px;
+	overflow: hidden;
+}
+
+.textured {
+    background: url('soft_wallpaper.png');
+}
+
+.view {
+    display: none;
+}
+
+.view:after {
+    content: ' ';
+    display: block;
+    clear: both;
+    position:relative;
+    height: 1px;
+    line-height: 1px;
+    overflow: hidden;
+}
+
+td.win-list {
+    width: 10em;
+}
+.win-list .summary-row {
+    border: 1px solid #EEE;
+    background-color: #FAFAFA;
+    font-size: .8em;
+    padding: .1em;
+    margin: .2em;
+}
+
+.win-list label:before {
+    content: '\2318';
+}
+
+.win-list-right label {
+    float: right;
+}
+
+.win-list-left label {
+    float: left;
+}
+
+.tally-bar .mark {
+    height: 7px;
+    width: 7px;
+    margin: 1px;
+    background-color: #939393;
+    display: inline-block;
+}
+
+.win-list-left .tally-bar {
+    float: right;
+}
+
+.win-list-right .tally-bar {
+    float: left;
+}
+
+.summary-row.has-filter-tabs {
+    outline: 1px solid #006EFF;
+}
+
+small.parenthetical:before {
+    content: '(';
+}
+small.parenthetical:after {
+    content: ')';
+}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.page.delete-mode {
+    cursor:not-allowed;
+}

@@ -1,0 +1,1 @@
+//var window_tpl = '<div class="window-item win-{{w.id}}"><a href="#{{w.id}}" class="go win-link"><span style="left: {{bounds[0]}}; top: {{bounds[1]}}; width: {{bounds[2]}}; height: {{bounds[3]}};"></span></a><div class="tab-items">{{tabs}}</div></div>';

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,QAAS;EACP,WAAW,EAHC,qCAAgB;;AAM9B,WAAY;EACV,KAAK,EAAE,KAAK;;AAEd,UAAW;EACT,KAAK,EAAE,IAAI",
+"sources": ["total-recall.scss"],
+"names": [],
+"file": "total-recall.css"
+}

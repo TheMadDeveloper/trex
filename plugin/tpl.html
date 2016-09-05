@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="lib/chromex.js"></script>
+    <script src="lib/handlebars-v2.0.0.js"></script>
+</head>
+<body>
+
+<script id="window-tpl" type="text/x-handlebars-template">
+    <div class="window-item win-{{w.id}}">
+        <a href="#{{w.id}}" class="go win-link"><span style="left:{{bounds.[0]}}; top: {{bounds.[1]}}; width: {{bounds.[2]}}; height: {{bounds.[3]}};"></span></a>
+        <div class="tab-items">
+            {{tabs}}
+        </div>
+    </div>
+</script>
+
+<script id="tabs-list-tpl" type="text/x-handlebars-template">
+    {{#each this}}
+        <span class="ico {{classes}}">
+            <img src="{{fav}}" class="ico" data-title="{{title}}" data-url="{{url}}" data-id="{{id}}">
+        </span>
+    {{/each}}
+</script>
+
+<script id="fav-ico" type="text/x-handlebars-template">
+    <img src="{{favicon this}}" class="ico" data-title="{{title}}" data-url="{{url}}" data-id="{{id}}">
+</script>
+
+<script id="win-list-tpl" type="text/x-handlebars-template">
+    {{#each windows}}
+    <div class="window-item win-{{id}}">
+        <a href="#{{id}}" class="go win-link"><span style="left:{{bounds.[0]}}; top: {{bounds.[1]}}; width: {{bounds.[2]}}; height: {{bounds.[3]}};"></span></a>
+        <div class="tab-items">
+            {{tpl "tabs-list-tpl" tabs}}
+        </div>
+    </div>
+    {{/each}}
+</script>
+
+<script id="current-window-tpl" type="text/x-handlebars-template">
+    <span class="dash-time">{{tab_count}}<span style="font-size: .5em"> / {{win_count}}</span></span>
+    <form id="name-window">
+        <input name="win-name" data-id="{{win.id}}" type="text" id="window-name" value="{{win.meta.name}}" />
+    </form>
+</script>
+
+<script id="tab-history-tpl" type="text/x-handlebars-template">
+    <ul>
+        {{#each recent_tabs}}
+        {{#if tab}}
+            <li class="recent-item">
+                <span class="time-ago">
+                    {{ftimefromto recent.time ../../now}} ago
+                </span>
+                <span>
+                    {{tpl "fav-ico" tab}}
+                    {{tab.title}}
+                </span>
+            </li>
+        {{else}}
+            <li><em>CLOSED</em> - {{ftimefromto recent.time ../../now}} ago</li>
+        {{/if}}
+        {{/each}}
+
+    </ul>
+</script>
+
+<script id="window-map-tpl" type="text/x-handlebars-template">
+    <ul>
+    {{#each windows}}
+        <li class="window-box">
+            <ul style="font-size: {{scale}}em">
+            {{#each tabs}}
+                {{#if (agtb @index ../upscale)}}
+                    <li class="tab-box"></li>
+                {{else}}
+                    <li class="tab-box" style="font-size: 2em;"></li>
+                {{/if}}
+            {{/each}}
+                <li class="label"><label>&#8984; {{@index}}</label></li>
+            </ul>
+        </li>
+    {{/each}}
+    </ul>
+</script>
+<script type="text/javascript">
+    cx.hb._init();
+</script>
+
+</body>
+</html>

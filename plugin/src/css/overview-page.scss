@@ -1,0 +1,59 @@
+.fixed-height {
+  position: absolute;
+  bottom: 20px;
+  top: 200px;
+  width: 100%;
+}
+
+#window-list {
+  float: none;
+  overflow: scroll;
+  height: 100%;
+  margin: 0;
+}
+
+#window-list .go {
+  float: left;
+  height: 25px;
+  width: 25px;
+}
+
+#window-list .tab-items {
+  overflow: hidden;
+}
+
+#window-list span.ico {
+  display: inline-block;
+  position: relative;
+  /*border: 1px solid silver;*/
+  margin:4px;
+  /*background-color: #EEE;*/
+  /*padding: 2px;*/
+}
+
+#window-list.show-highlights img.ico {
+  -webkit-filter: grayscale(90%); /* Chrome, Safari, Opera */
+  filter: grayscale(90%);
+  opacity: .25;
+  &.highlight {
+    -webkit-filter: grayscale(0%); /* Chrome, Safari, Opera */
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+}
+
+.win-link {
+  border: 1px solid #CAE0FE;
+  background-color: #E2EEFE;
+  border-radius: 5px;
+  position: relative;
+}
+
+.window-item span.ico {
+  &.chrome-extension {
+    outline: 1px solid lime;
+  }
+  img.ico {
+
+  }
+}

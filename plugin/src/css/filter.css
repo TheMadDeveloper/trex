@@ -1,0 +1,145 @@
+body {
+  background-color: #EEE;
+  margin: 0; }
+
+.tab-row {
+  padding: 5px 0;
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #CCC;
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-size: 13px;
+  white-space: nowrap;
+  line-height: 15px;
+  overflow: hidden;
+  cursor: pointer; }
+  .tab-row.focus {
+    background-color: #006EFF;
+    border-radius: 7px;
+    color: white; }
+  .tab-row .url {
+    font-size: 11px;
+    color: #AAA;
+    overflow: hidden; }
+  .tab-row.focus .url {
+    color: #EEE; }
+  .tab-row .fav-frame {
+    float: left;
+    margin: 0 5px;
+    background-color: rgba(250, 250, 250, 0.8);
+    border-radius: 5px;
+    padding: 5px 5px;
+    border: 1px solid rgba(100, 100, 100, 0.1); }
+  .tab-row .last-view {
+    float: right;
+    font-size: 11px;
+    margin-left: .5em;
+    margin-right: .5em; }
+
+#help ul {
+  margin: 0;
+  padding: 0; }
+  #help ul li {
+    display: inline-block;
+    font-size: .8em;
+    color: #AAA;
+    margin-right: .5em; }
+
+.win-map {
+  width: 480px;
+  float: right; }
+  .win-map:after {
+    content: '&nbsp';
+    clear: both;
+    font-size: 0;
+    visibility: hidden;
+    height: 0;
+    width: 0; }
+  .win-map ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    float: left; }
+  .win-map .window-box {
+    float: left;
+    width: 48px;
+    height: 48px;
+    font-size: 48px;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: relative; }
+    .win-map .window-box .label label {
+      display: block;
+      position: absolute;
+      font-size: 10px;
+      top: 100%;
+      text-align: center;
+      width: 100%;
+      color: #ccc; }
+  .win-map .tab-box {
+    float: left;
+    box-sizing: border-box;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 1em;
+    height: 1em; }
+
+.summary-links a {
+  width: 20px;
+  height: 15px;
+  line-height: 15px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #F1F1F1;
+  border: 1px solid #F1F1F1;
+  font-size: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 0 0 1px 1px;
+  float: left; }
+
+.stats {
+  float: left;
+  margin-left: .5em; }
+
+#summary {
+  margin-left: auto;
+  margin-right: auto;
+  color: #666; }
+  #summary h1 {
+    font-weight: 300;
+    font-size: 3em;
+    color: #F1F1F1;
+    margin: 0; }
+
+.gradient {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00a9ed+0,207ce5+50,9018f9+100 */
+  background: #00a9ed;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #00a9ed 0%, #207ce5 50%, #9018f9 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #00a9ed), color-stop(50%, #207ce5), color-stop(100%, #9018f9));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #00a9ed 0%, #207ce5 50%, #9018f9 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #00a9ed 0%, #207ce5 50%, #9018f9 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #00a9ed 0%, #207ce5 50%, #9018f9 100%);
+  /* IE10+ */
+  background: linear-gradient(to right, #00a9ed 0%, #207ce5 50%, #9018f9 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a9ed', endColorstr='#9018f9',GradientType=1 );
+  /* IE6-9 */ }
+
+input.tab-filter {
+  width: 98%;
+  padding: .5em;
+  margin: 1%;
+  font-size: 1.2em; }
+
+hr.gradient {
+  height: .25em;
+  border: none;
+  margin: 0; }
+
+/*# sourceMappingURL=filter.css.map */

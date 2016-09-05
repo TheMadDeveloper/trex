@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <title>Catalyst</title>
+    <style>
+
+    </style>
+    <link rel="stylesheet" href="trex.css" type="text/css"/>
+    <link rel="stylesheet" href="src/css/total-recall.css" type="text/css"/>
+    <link rel="stylesheet" href="src/css/filter.css" type="text/css"/>
+
+    <!-- JavaScript and HTML must be in separate files for security. -->
+    <script src="lib/jquery-2.0.3.min.js"></script>
+    <!--<script src="lib/jquery.svg.min.js"></script>-->
+
+
+</head>
+<body>
+<div class="pop-wrap">
+
+    <div class="clearfix gradient" id="summary">
+        <div class="stats pull-left">
+            <h1 class="" data-content="tab-count"></h1>
+            <div class="summary-links">
+                <a href="#overview-page">O</a>
+                <a href="#tab-history" tabindex="-1">H</a>
+                <a href="#tab-history" tabindex="-1">S</a>
+            </div>
+        </div>
+        <div class="win-map"></div>
+        <div class="panel-section tab-filter-container">
+            <input type="text" autofocus tabindex="1" id="tab-filter" class="tab-filter"/>
+        </div>
+    </div>
+    <!--<div id="testsvg"></div>-->
+    <div id="help" style="visibility:hidden">
+        <ul>
+            <li><span class="key">&#8984;S</span> sort windows</li>
+            <li><span class="key">&#8984;-</span> Find cruft</li>
+            <li><span class="key">&#8984;&uarr;</span> Pop tab out</li>
+            <li><span class="key">&#8984;&darr;</span> Pull in focused tab</li>
+            <li><span class="key">&#8679;&#8984;&darr;</span> Pull filtered tabs in</li>
+            <li><span class="key">&#8984;D</span> Filter to domain</li>
+        </ul>
+    </div>
+    <div id="out"></div>
+    <div id="all-tabs"></div>
+</div>
+<div class="view" id="win-summary-row">
+    <label data-property="index"></label>
+    &nbsp;
+</div>
+
+<script src="lib/chromex.js"></script>
+<script src="lib/qwerty.js"></script>
+<script src="src/utils.js"></script>
+<script src="src/views/window-map.js"></script>
+<script src="src/views/recall-panel.js"></script>
+
+</body>
+</html>
