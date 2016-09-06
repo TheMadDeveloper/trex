@@ -78,12 +78,18 @@ $.extend(OverviewPage.prototype, {
     },
 
     tabClick: function($ico, evt) {
-
-        console.log("tabClick", $ico);
         if (this.mode == "activate") {
-            chrome.tabs.get($ico.data("id"), function(tab) {
-                trex.activate(tab);
-            });
+            var tabId = $ico.data("id");
+            if ((tabId != -1) && trex._meta_tabs[tabId]) {
+                chrome.tabs.get(tabId, function(tab) {
+                    trex.activate(tab);
+                });
+            }
+            else {
+                // Not really a tab (maybe devtools or removed or something)
+                // Activate the window it was supposed to be in
+                trex.activateWindow($ico.closest(".window-item").attr("class").match(/win-([\d]+)/)[1]);
+            }
         }
         else if (this.mode == "select") {
             this.selectTabs($ico, {add: evt.shiftKey})
@@ -142,7 +148,7 @@ $.extend(OverviewPage.prototype, {
     renderWindows: function($container, windows) {
         var win_data = [],
             screen_size = [1440, 896];
-        console.log(windows);
+
         for (var i = 0, n = windows.length; i < n; i++) {
             var win = windows[i],
                 win_bounds = [
@@ -157,7 +163,7 @@ $.extend(OverviewPage.prototype, {
                     win_bounds[2] + "%",
                     win_bounds[3] + "%"
                 ];
-            console.log(win);
+
             win_data.push({
                 id: win.id,
                 bounds: bounds,
@@ -321,6 +327,11 @@ $.extend(OverviewPage.prototype, {
 
         chrome.tabs.move(tab_ids, {windowId: win.id, index: -1});
         $selected.detach().appendTo(this.$winrow(win.id).find(".tab-items"));
+    },
+
+    regen: function() {
+        var me = this;
+        trex._regenCache().done(function() { me.initWindowList($("#window-list").empty()); });
     },
 
     remove: function() {

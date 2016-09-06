@@ -64,9 +64,6 @@ $.extend(RecallPanel.prototype, {
                 event.preventDefault();
                 return false;
             },
-            'cmd+enter': function(event) {
-                trex.debug("command enter");
-            },
             'cmd+h': function(event) {
                 chrome.tabs.create({url: chrome.extension.getURL('tab-history.html')});
                 event.preventDefault();

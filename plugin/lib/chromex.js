@@ -147,18 +147,18 @@ chromex.hb = {
 				"</span><span class='seconds'>", secs, "</span>"
 			].join(""));
 		},
-		favicon: function(tab) {
-			var re = new RegExp(/chrome:/);
-			if (/chrome-extension:/.test(tab.url)) {
-				return "/IDR_EXTENSIONS_FAVICON@2x.png"
-			}
-
-			if (tab.favIconUrl && !re.test(tab.url)) {
-				return tab.favIconUrl;
-			}
-
-			return "/chrome-file-icon.png";
-		},
+		//favicon: function(tab) {
+		//	var re = new RegExp(/chrome:/);
+		//	if (/chrome-extension:/.test(tab.url)) {
+		//		return "/IDR_EXTENSIONS_FAVICON@2x.png"
+		//	}
+        //
+		//	if (tab.favIconUrl && !re.test(tab.url)) {
+		//		return tab.favIconUrl;
+		//	}
+        //
+		//	return "/chrome-file-icon.png";
+		//},
 		winbox_size: function(num_tabs) {
 			return Math.floor(Math.sqrt(num_tabs))*10;
 		},

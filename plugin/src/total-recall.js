@@ -46,7 +46,7 @@ $.extend(TotalRecall.prototype,
 
             this.debug("caching tabs and windows");
 
-            chrome.windows.getAll({populate: true}, function(windows) {
+            chrome.windows.getAll({populate: true, windowTypes:["normal","devtools"]}, function(windows) {
                 me._generateMetaProperties(windows);
                 me._cacheValid = true;
                 deferred.resolve({wins: me._windows, tabs: me._tabs});
@@ -91,6 +91,12 @@ $.extend(TotalRecall.prototype,
         _updateMetaTab: function(tab) {
             var now = utils.seconds();
             this._meta_tabs[tab.id] = {tab: tab, last_view: new Date(now * 1000), updated: now*1000};
+        },
+
+        removeTab: function(tabId) {
+            var index = this._tabs.findIndex(function(tab) { return tab.id == tabId; });
+            this._tabs.splice(index, 1);
+            delete this._meta_tabs[tabId];
         },
 
         stats: function() {
@@ -167,15 +173,15 @@ $.extend(TotalRecall.prototype,
             var me = this;
             me.debug("saving " + me.log.tab_history_buffer.length+" log items");
 
-            var buffer_tabs = this.log.tab_history_buffer.map(function(log_item) {
-                me.debug(log_item);
-                if (log_item.tabId) {
-                    chrome.tabs.get(log_item.tabId, function(tab) { log_item.context = tab.url; });
-                }
-                return log_item;
-            });
+            //var buffer_tabs = this.log.tab_history_buffer.map(function(log_item) {
+            //    me.debug(log_item);
+            //    if (log_item.tabId && me._meta_tabs[log_item.tabId]) {
+            //        chrome.tabs.get(log_item.tabId, function(tab) { log_item.context = tab.url; });
+            //    }
+            //    return log_item;
+            //});
 
-            this.log.tab_history = this.log.tab_history.concat(buffer_tabs);
+            this.log.tab_history = this.log.tab_history.concat(this.log.tab_history_buffer);
             this.log.tab_history_buffer = [];
             chrome.storage.local.set(
                 {
@@ -398,7 +404,9 @@ $.extend(TotalRecall.prototype,
         },
 
         activate: function(tab) {
-            chrome.tabs.update(tab.id, {active: true});
+            if (tab.id != -1) {
+                chrome.tabs.update(tab.id, {active: true});
+            }
             chrome.windows.update(tab.windowId, {focused: true});
             return tab;
         },

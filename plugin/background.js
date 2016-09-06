@@ -12,12 +12,12 @@ chrome.tabs.onCreated.addListener(function(tab) {
 
 // When a tab is removed
 chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
-    delete trex._meta_tabs[tabId];
+    trex.removeTab(tabId);
 });
 
 // When a window is removed
 chrome.windows.onRemoved.addListener(function(windowId) {
-    delete trex._meta_wins[windowId];
+    trex._cacheValid = false;
 });
 
 // When window focus changes
