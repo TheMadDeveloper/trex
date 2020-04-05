@@ -6,21 +6,19 @@ keys.map(keys.PERIOD, {cmd: true}, function() {
     chrome.extension.sendRequest({activate_filter: true}, function(response) {});
 });
 
-window.addEventListener("keydown", function(event) {
+//window.addEventListener("keydown", function(event) {
 
   /*
   keys.handle(event);
   // Bind to both command (for Mac) and control (for Win/Linux)
   var modifier = event.ctrlKey || event.metaKey;
-    //console.log(event.keyCode);
-    if (event.keyCode == 191) {
-        chrome.extension.sendRequest({toggle_pin: true}, function(response) {
-          // Do stuff on successful response
-        });
-    }
-    */
-
-    console.log(event);
-    //console.log(keys.test(event, {"key": 40}));
-    //keys.handle(event);
-}, false);
+  //console.log(event.keyCode);
+  if (event.keyCode == 191) {
+      chrome.extension.sendRequest({toggle_pin: true}, function(response) {
+        // Do stuff on successful response
+      });
+  }
+  */
+  //console.log(keys.test(event, {"key": 40}));
+  //keys.handle(event);
+//}, false);

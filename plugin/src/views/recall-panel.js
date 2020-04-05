@@ -134,8 +134,8 @@ $.extend(RecallPanel.prototype, {
             .on("keydown", function(event) {
                 var $input = $(this);
                 var pattern = $input.val();
-                
-                if (event.metaKey) {
+
+                if (event.ctrl) {
                     if (event.which == 189 /* - */) {
                         me.filterList("gir|imdb");
                         event.preventDefault();
