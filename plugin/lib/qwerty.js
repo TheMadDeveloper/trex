@@ -147,6 +147,8 @@ var keys = {
     }
 };
 
+const QWERTY = keys;
+
 /*
 $.extend(keys.mapper.prototype, {
     down: function(key, fnAction) {

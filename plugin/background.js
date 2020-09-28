@@ -1,23 +1,24 @@
-var trex = new TotalRecall();
+// Shared background instance
+const metabolic = METABOLIC.create(self);
 
 // When a tab is activated
 chrome.tabs.onActivated.addListener(function(activated) {
-    trex.logTabSwitch(activated);
+    metabolic.logTabSwitch(activated);
 });
 
 chrome.tabs.onCreated.addListener(function(tab) {
-    trex._updateMetaTab(tab);
-    trex._cacheValid = false;
+    metabolic._updateMetaTab(tab);
+    metabolic._cacheValid = false;
 });
 
 // When a tab is removed
 chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
-    trex.removeTab(tabId);
+    metabolic.removeTab(tabId);
 });
 
 // When a window is removed
 chrome.windows.onRemoved.addListener(function(windowId) {
-    trex._cacheValid = false;
+    metabolic._cacheValid = false;
 });
 
 // When window focus changes
@@ -29,16 +30,16 @@ chrome.windows.onFocusChanged.addListener(function(window_id) {
     chrome.tabs.query({active: true, windowId: window_id}, function(tabs) {
         if (tabs[0]) {
             console.log("log tab switch from window", tabs);
-            trex.logTabSwitch(tabs[0]);
+            metabolic.logTabSwitch(tabs[0]);
         }
     });
 });
 
-chrome.runtime.onStartup.addListener(function() { trex.init(); });
+chrome.runtime.onStartup.addListener(function() { metabolic.init(); });
 
 // https://developer.chrome.com/extensions/webNavigation
 chrome.webNavigation.onCommitted.addListener(function(details) {
     if (details.transitionType.indexOf("subframe") == -1) {
-        trex.refreshTab(details.tabId);
+        metabolic.refreshTab(details.tabId);
     }
 });

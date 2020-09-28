@@ -1,6 +1,6 @@
 {
-  "name": "Total Recall",
-  "version": "0.8.0",
+  "name": "Metabolic",
+  "version": "1.0.0",
   "manifest_version": 2,
   "description": "Customized tab switching and managing.",
   "permissions": [
@@ -12,15 +12,15 @@
     "webNavigation"
   ],
   "background": {
-    "scripts": ["lib/jquery-2.0.3.min.js", "src/utils.js", "src/total-recall.js", "background.js"],
+    "scripts": [
+      "lib/chromex.js",
+      "lib/jquery-2.0.3.min.js",
+      "src/utils.js",
+      "src/metabolic.js",
+      "background.js"
+    ],
     "persistent": true
   },
-//  "content_scripts": [
-//    {
-//      "matches": ["<all_urls>"],
-//      "js": ["lib/qwerty.js","inject.js"]
-//    }
-//  ],
   "sandbox": {
     "pages": ["tpl.html"]
   },
@@ -28,9 +28,6 @@
     "default_icon": "icon.png",
     "default_popup": "recall-panel.html"
   },
-//  "chrome_url_overrides": {
-//    "newtab": "overview-page.html"
-//  },
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {

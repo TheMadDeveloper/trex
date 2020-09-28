@@ -1,55 +1,33 @@
 <!doctype html>
-<html>
+<html class="full-screen">
 <head>
-    <title>TotalRecall</title>
+    <title>Metabolica</title>
     <style>
 
     </style>
     <link rel="stylesheet" href="trex.css" type="text/css" />
-    <link rel="stylesheet" href="startpage.css" type="text/css" />
-    <link rel="stylesheet" href="src/css/overview-page.css" type="text/css" />
+<!--    <link rel="stylesheet" href="startpage.css" type="text/css" />-->
+<!--    <link rel="stylesheet" href="src/css/overview-page.css" type="text/css" />-->
+    <link rel="stylesheet" href="src/css/dashboard.css" type="text/css" />
+    <link rel="stylesheet" href="layout.css" type="text/css" />
 
     <!-- JavaScript and HTML must be in separate files for security. -->
     <script src="lib/jquery-2.0.3.min.js"></script>
     <script src="lib/chromex.js"></script>
+    <script src="lib/d3.v5.js"></script>
 
 </head>
-<body class="centered-page startpage">
-<div class="page">
-    <div id="info-bar" class="panel">
-        <div class="pull-right">
-            <span class="mode active" data-mode="activate">Activate</span> |
-            <span class="mode" data-mode="select">Select</span> |
-            <span class="mode" data-mode="delete">Delete</span> |
-            <span class="mode" data-mode="domain-select">Select Domain</span> |
-            <span class="mode" data-mode="dup-select">Select Duplicates</span> |
-            <button class="tool" data-action="consolidate" disabled="disabled">Consolidate</button> |
-            <button class="tool" data-action="remove" disabled="disabled">Remove</button>
-            <span class="tool" data-action="regen">REFRESH</span>
+<body>
+    <div id="wrapper" class="vertical-flex">
+        <div class="section">
+            <div id="info-bar">Dashboard</div>
         </div>
-        <div class="info-msg"></div>
+        <div class="section main" id="tab-map">
+        </div>
     </div>
-    <!--<div id="dash">-->
-    <!--dashboard-->
-    <!--</div>-->
-    <div id="current-window" class="clearfix"></div>
-
-    <div class="fixed-height">
-        <div id="window-list" class="panel"></div>
-    </div>
-
-    <!--<div id="page-footer">-->
-    <!--<span id="load-time">load time</span>-->
-    <!--</div>-->
-</div>
-
-<div id="window-tpl" style="display:none;" class="window-item">
-    <span data-content="id"></span> (<span data-content="state"></span>)
-    <br/>
-</div>
-
-<script src="src/utils.js"></script>
-<script src="src/views/overview-page.js"></script>
-
+    <script src="src/metabolic.js"></script>
+    <script src="src/utils.js"></script>
+    <script src="src/views/TabMap.js"></script>
+    <script src="src/views/overview-page.js"></script>
 </body>
 </html>

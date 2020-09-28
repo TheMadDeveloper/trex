@@ -1,8 +1,8 @@
 /**
  * Created by Keith Kerlan on 2/2/14.
  */
-
-var trex = chrome.extension.getBackgroundPage().trex;
+self.metabolic = METABOLIC.getInstance();
+// METABOLIC.chromex = chrome.extension.getBackgroundPage().cx;
 
 document.addEventListener('DOMContentLoaded', function () {
     new RecallPanel();
@@ -21,30 +21,31 @@ $.extend(RecallPanel.prototype, {
     filteredTabs: null,
 
     init: function(options) {
-        var me = this;
-        
+        const me = this;
+
         this.$filter_input = $("#tab-filter");
         this.$tab_list = $("#all-tabs");
         this.initFilterInput(this.$filter_input);
 
-        trex.windows().done(function(windows) {
-            cx.view.apply($(".stats"), trex.stats());
+        metabolic.windows().done(function(windows) {
+            //chrome.windows.getCurrent(w => cx.view.apply($(".stats"), metabolic.stats(w)));
+            METABOLIC.getCurrentWinId(chrome, w => cx.view.apply($(".stats"), metabolic.stats(w)));
             me.filterRecent();
-            new WindowMap($(".win-map")).render({windows: windows});
+            //new WindowMap($(".win-map")).render({windows: windows});
         });
     },
 
     initFilterInput: function($filter_input) {
-        var me = this;
+        const me = this;
 
-        keys.handlers($filter_input, "keydown", {
+        QWERTY.handlers($filter_input, "keydown", {
             'cmd': function() {
                 $("#help").css("visibility", "visible");
             },
             'right': function(event) {
                 var pattern = this.val();
                 if (pattern == "") {
-                    trex.moveActiveTabToEnd();
+                    metabolic.moveActiveTabToEnd();
                 }
             },
             'up': function() {
@@ -56,10 +57,10 @@ $.extend(RecallPanel.prototype, {
             'enter': function(event) {
                 var tab = me.getFocusedTab();
                 if (tab) {
-                    trex.activate(tab);
+                    metabolic.activate(tab);
                 }
                 else if (me.$filtered) {
-                    trex.activate(me.$filtered[0].data("tab"));
+                    metabolic.activate(me.$filtered[0].data("tab"));
                 }
                 event.preventDefault();
                 return false;
@@ -76,7 +77,7 @@ $.extend(RecallPanel.prototype, {
             },
             'cmd+f': function(event) {
                 event.preventDefault();
-                trex.getActiveTab(function(tab) {
+                metabolic.getActiveTab(function(tab) {
                     chrome.pageCapture.saveAsMHTML({tabId: tab.id}, function(mhtml) {
                         //console.log(mhtml);
                         //chrome.tabs.create({url: window.webkitURL.createObjectURL(mhtml)});
@@ -94,26 +95,22 @@ $.extend(RecallPanel.prototype, {
             },
             'cmd+up': function(event) {
                 // Should pop Focused Tab Out
-                trex.popTabOut(me.getFocusedTab());
+                metabolic.popTabOut(me.getFocusedTab());
                 event.preventDefault();
                 return false;
             },
             'cmd+shift+up': function(event) {
-                trex.popTabsOut(me.getFilteredIds());
+                metabolic.popTabsOut(me.getFilteredIds());
                 event.preventDefault();
                 return false;
             },
             'cmd+down': function(event) {
-                chrome.windows.getCurrent(function(win) {
-                    trex.pullTabIn(win, me.getFocusedTab());
-                });
+                METABOLIC.pullTabsIn(me.getFocusedTab().id);
                 event.preventDefault();
                 return false;
             },
             'cmd+shift+down': function(event) {
-                chrome.windows.getCurrent(function(win) {
-                    trex.pullTabsIn(win, me.getFilteredIds());
-                });
+                metabolic.pullTabsIn(me.getFilteredIds());
                 event.preventDefault();
                 return false;
             }
@@ -142,13 +139,13 @@ $.extend(RecallPanel.prototype, {
                         return false;
                     }
                     else if (event.which == 68 /* d */) {
-                        trex.filterToFocusedTabDomain();
+                        metabolic.filterToFocusedTabDomain();
                         event.preventDefault();
                         return false;
                     }
                     else if (event.which == 83 /* s */) {
-                        trex.getTabs({currentWindow: true}, function(tabs) {
-                            trex.sortTabs(tabs, true);
+                        metabolic.getTabs({currentWindow: true}, function(tabs) {
+                            metabolic.sortTabs(tabs, true);
                             $input.val("");
                         });
                         event.preventDefault();
@@ -156,7 +153,7 @@ $.extend(RecallPanel.prototype, {
                     }
                 }
                 else if (event.which == 8 && event.shiftKey /* SHIFT DELETE */) {
-                    trex.closeFocusedTab();
+                    metabolic.closeFocusedTab();
                     event.preventDefault();
                     return false;
                 }
@@ -165,7 +162,7 @@ $.extend(RecallPanel.prototype, {
         $(document.body).on("click","a[href^=#]",
             function(event) {
                 event.preventDefault();
-                trex.route($(this).attr("href").substr(1), true, true);
+                metabolic.route($(this).attr("href").substr(1), true, true);
                 return false;
             }
         );
@@ -180,7 +177,7 @@ $.extend(RecallPanel.prototype, {
             var $tab = me.renderTab(tabs[i])
                 .on("mouseover", function() { me.setFocus($(this)); })
                 .on("mouseout", function() { me.clearFocus(); })
-                .on("click", function() { trex.activate($(this).data("tab"))});
+                .on("click", function() { metabolic.activate($(this).data("tab"))});
             $tabs[i]=$tab;
         }
 
@@ -209,14 +206,14 @@ $.extend(RecallPanel.prototype, {
     // Shows recent tabs in the filter section of the recall panel
     filterRecent: function() {
         var me = this;
-
-        chromex.tabs.getCurrentTab(function(current_tab) {
-            var recent_tabs = trex.recentTabs(6, current_tab ? [current_tab.id] : current_tab);
-            me.$filtered = me.renderTabs(recent_tabs);
-            me.filteredTabs = recent_tabs;
-
-            me.$tab_list.empty().append(me.$filtered);
-        });
+        //
+        // chromex.tabs.getCurrentTab(function(current_tab) {
+        //     var recent_tabs = metabolic.recentTabs(6, current_tab ? [current_tab.id] : current_tab);
+        //     me.$filtered = me.renderTabs(recent_tabs);
+        //     me.filteredTabs = recent_tabs;
+        //
+        //     me.$tab_list.empty().append(me.$filtered);
+        // });
 
     },
 
@@ -259,7 +256,7 @@ $.extend(RecallPanel.prototype, {
     filterTabs: function(fnFilter) {
         var me = this;
 
-        trex.tabs()
+        metabolic.tabs()
             .done(function(mtabs) {
                 var tabs = $.map(mtabs, function(mtab, i) {return [mtab];});
                 var filtered_tabs = tabs.filter(function(t) { return fnFilter(t.tab); });

@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b482bca-1fe4-409d-b751-596da975256d" name="Default" comment="">
+    <list default="true" id="6b482bca-1fe4-409d-b751-596da975256d" name="Default" comment="Adjustments for...I don't know. They were made a year ago">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/plugin.2/assets/IDR_EXTENSIONS_FAVICON.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/plugin.2/assets/IDR_EXTENSIONS_FAVICON@2x.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/plugin.2/assets/icon.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/plugin.2/manifest.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/plugin.2/views/recall-panel.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/layout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/lib/d3.v5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/css/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/views/TabMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugin/inject.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/inject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/background.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/filter-list.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/lib/chromex.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/lib/chromex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/lib/qwerty.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/lib/qwerty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/overview-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/overview-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/recall-panel.html" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/recall-panel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/total-recall.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/metabolic.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/views/overview-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/views/overview-page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plugin/src/views/recall-panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/views/recall-panel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/startpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/startpage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/tab-history.html" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/tab-history.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,11 +41,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="873" />
   </component>
   <component name="ProjectId" id="1ZgoszQtkmFHGjuLCz5ZAO6f0U8" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -62,22 +74,28 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="FullScreen" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/plugin.2/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="options.lastSelected" value="Errors" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/plugin.2/views" />
       <recent name="$PROJECT_DIR$/plugin.2/assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/plugin/src/views" />
       <recent name="$PROJECT_DIR$/plugin/src/css" />
     </key>
   </component>
@@ -162,8 +180,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1473033979817</updated>
-      <workItem from="1585270311562" duration="12102000" />
+      <workItem from="1585270311562" duration="16430000" />
+      <workItem from="1586067270762" duration="552000" />
+      <workItem from="1586127898644" duration="1410000" />
+      <workItem from="1586129674017" duration="14567000" />
+      <workItem from="1586374057640" duration="64000" />
+      <workItem from="1587796531662" duration="1417000" />
+      <workItem from="1590302161289" duration="14180000" />
+      <workItem from="1591055005893" duration="8000" />
+      <workItem from="1598237416739" duration="15684000" />
+      <workItem from="1598503682827" duration="14097000" />
+      <workItem from="1598602324869" duration="4263000" />
+      <workItem from="1601256131842" duration="9134000" />
     </task>
+    <task id="LOCAL-00001" summary="Adjustments for...I don't know. They were made a year ago">
+      <created>1586047294671</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586047294671</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,18 +214,22 @@
       <collection />
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Adjustments for...I don't know. They were made a year ago" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjustments for...I don't know. They were made a year ago" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="469" y="161" key="NewModule_or_Project.wizard" timestamp="1585272465166">
+    <state x="0" y="23" width="1680" height="1027" key="CommitChangelistDialog2" timestamp="1601266025251">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="469" y="161" key="NewModule_or_Project.wizard/0.23.1680.1027@0.23.1680.1027" timestamp="1585272465166" />
-    <state x="497" y="295" width="685" height="482" key="find.popup" timestamp="1585356437642">
+    <state x="0" y="23" width="1680" height="1027" key="CommitChangelistDialog2/0.23.1680.1027@0.23.1680.1027" timestamp="1601266025251" />
+    <state x="496" y="277" width="687" height="518" key="find.popup" timestamp="1598505666085">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="497" y="295" width="685" height="482" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1585356437642" />
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1585356450876">
+    <state x="496" y="277" width="687" height="518" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598505666085" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1598506548779">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1585356450876" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598506548779" />
   </component>
 </project>

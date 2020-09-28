@@ -2,15 +2,15 @@
  * Created by keith on 2/2/14.
  */
 
-var trex = chrome.extension.getBackgroundPage().trex;
+//var trex = chrome.extension.getBackgroundPage().trex;
+self.metabolic = METABOLIC.getInstance();
 
 document.addEventListener('DOMContentLoaded', function () {
     new OverviewPage();
 });
 
 function OverviewPage() {
-    var me = this;
-    me.init();
+    this.init();
 }
 
 $.extend(OverviewPage.prototype, {
@@ -21,16 +21,18 @@ $.extend(OverviewPage.prototype, {
 
     init: function() {
         // Init properties
-        this.$info = $("#info-bar > .info-msg");
-        this.$mode_toggles = $("[data-mode]");
-        this.$tools = $("button.tool");
-        this.setMode("activate");
+        this.$info = $("#info-bar");
+        //this.$mode_toggles = $("[data-mode]");
+        //this.$tools = $("button.tool");
+        //this.setMode("activate");
 
-        this.initWindowList($("#window-list"));
+        //this.initWindowList($("#window-list"));
+        this.renderTabMap($("#tab-map"));
 
         this.initEventHandlers();
 
         $("#load-time").html(new Date().toLocaleString());
+
     },
 
     initEventHandlers: function() {
@@ -42,7 +44,7 @@ $.extend(OverviewPage.prototype, {
             })
             .on("click", "a.win-link", function(event) {
                 event.preventDefault();
-                trex.activateWindow($(this).attr("href").substring(1));
+                //trex.activateWindow($(this).attr("href").substring(1));
             })
             .on("click", "img.ico", function(event) {
                 me.tabClick($(this), event);
@@ -69,7 +71,7 @@ $.extend(OverviewPage.prototype, {
             .on("submit", "#name-window", function(evt) {
                 evt.preventDefault();
                 var $input = $(this).find("input#window-name");
-                trex.nameWindow($input.data("id"), $input.val());
+                //trex.nameWindow($input.data("id"), $input.val());
                 return false;
             })
             .on("click", "button.custom-page", function(evt) {
@@ -80,6 +82,7 @@ $.extend(OverviewPage.prototype, {
     tabClick: function($ico, evt) {
         if (this.mode == "activate") {
             var tabId = $ico.data("id");
+            return;
             if ((tabId != -1) && trex._meta_tabs[tabId]) {
                 chrome.tabs.get(tabId, function(tab) {
                     trex.activate(tab);
@@ -109,6 +112,58 @@ $.extend(OverviewPage.prototype, {
         }
     },
 
+    renderTabMap: function($container) {
+        const $info = this.$info;
+        metabolic.classifyTabs(tabTree => {
+            console.log("Tab Tree", tabTree);
+
+            const resolveName = (root, key) => {
+                if (root === '$')
+                    return key.substring(1);
+                if (key[0] === '.')
+                    return `${key.substring(1)}.${root}`;
+                return root + key;
+            }
+            const fnMapper = (name, branch) => {
+                let { _tabs, ...children } = branch;
+                _tabs = _tabs || [];
+
+                children = Object.keys(children).map(key => fnMapper(
+                    resolveName(name, key),
+                    branch[key])
+                );
+
+                while (children && children.length === 1 && children[0].children) {
+                    children = children[0].children;
+                }
+
+                // Has a "tabs" member
+                if (_tabs.length > 0) {
+                    const _tabMap = {};
+                    _tabs.forEach(tab => {
+                        const name = tab.url;
+                       _tabMap[name] = _tabMap[name] || { name: name, value: 0, _t: [] };
+                       _tabMap[name].value++;
+                       _tabMap[name]._t.push(tab);
+                    });
+                    children = children.concat(Object.values(_tabMap));
+                }
+
+                //const children = Object.keys(branch).map(key => fnMapper(key, branch[key])).flat();
+                return { name, children };
+            }
+
+            const treeData = fnMapper("$", tabTree);
+            if (treeData.children.length > 0) {
+                const tm = new TabMap($container, treeData, {
+                    onMouseOver: (d) => { $info.html(d.data.name); },
+                    onMouseOut: (d) => { $info.html("&nbsp;"); }
+                });
+                tm.render();
+            }
+        });
+    },
+
     initWindowList: function($list) {
         if (!$list) {
             return;
@@ -116,6 +171,22 @@ $.extend(OverviewPage.prototype, {
 
         var me = this;
 
+
+        // metabolic.tabs()
+        //     .done(function(mtabs) {
+        //
+        //         const groups = {};
+        //
+        //         var tabs = $.map(mtabs, function(mtab, i) {
+        //             me.addToGroup(groups, me.splitUrl(new URL(mtab.tab.url)), mtab);
+        //
+        //             return [mtab];
+        //         });
+        //         console.log(tabs);
+        //         console.log(groups);
+        //     });
+
+        return;
         trex.windows()
             .done(function(windows) {
                 me.refreshData();

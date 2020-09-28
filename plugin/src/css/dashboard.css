@@ -1,0 +1,28 @@
+body {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-size: 14px;
+}
+
+.vertical-flex > div:first-child {
+  background-color: white;
+  flex-grow: 0;
+}
+
+.vertical-flex > div {
+  background-color: blue;
+  flex-grow: 1;
+}
+
+#info-bar {
+  margin: 1rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+svg {
+  display: block;
+}
